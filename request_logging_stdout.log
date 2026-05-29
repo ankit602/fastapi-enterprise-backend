@@ -1,0 +1,23 @@
+DATABASE_URL = postgresql://postgres:postgres@localhost:5432/fastapi_practice_db
+request_id=2e1c420c-cda7-4a6f-827c-83c1bf89f80d method=GET path=/ status_code=200 latency_ms=2.07
+INFO:     127.0.0.1:65337 - "GET / HTTP/1.1" 200 OK
+request_id=361ee04c-8807-4b16-8788-f4147a81a20b method=GET path=/ status_code=200 latency_ms=2.07
+INFO:     127.0.0.1:52994 - "GET / HTTP/1.1" 200 OK
+request_id=5bfce094-1580-4d2d-8b9e-dc134cb48808 method=GET path=/favicon.ico status_code=404 latency_ms=0.32
+INFO:     127.0.0.1:52994 - "GET /favicon.ico HTTP/1.1" 404 Not Found
+request_id=69ae3142-d4dd-4f01-aac2-06fb2cb949d1 method=GET path=/docs status_code=200 latency_ms=0.53
+INFO:     127.0.0.1:59684 - "GET /docs HTTP/1.1" 200 OK
+request_id=ea83ba46-a664-4652-b873-975aa2f58e51 method=GET path=/openapi.json status_code=200 latency_ms=54.7
+INFO:     127.0.0.1:59684 - "GET /openapi.json HTTP/1.1" 200 OK
+request_id=a2edefb7-3f64-4365-82e2-4b11979416c4 method=GET path=/api/v1/employees/ status_code=401 latency_ms=1.29
+INFO:     127.0.0.1:51155 - "GET /api/v1/employees/?page=1&limit=10&sort_by=id&order=asc HTTP/1.1" 401 Unauthorized
+request_id=7688963e-fe4d-42de-8e3b-515de3f71ed7 method=GET path=/api/v1/departments/ status_code=401 latency_ms=1.03
+INFO:     127.0.0.1:61244 - "GET /api/v1/departments/ HTTP/1.1" 401 Unauthorized
+request_id=ec1fd51b-44b3-4eac-b348-32f8ec3dd2cd method=POST path=/api/v1/auth/login status_code=200 latency_ms=438.66
+INFO:     127.0.0.1:55855 - "POST /api/v1/auth/login HTTP/1.1" 200 OK
+request_id=a1e75705-04ba-453b-84db-c7239aaae902 method=GET path=/api/v1/employees/ status_code=401 latency_ms=0.37
+INFO:     127.0.0.1:62522 - "GET /api/v1/employees/?page=1&limit=10&sort_by=id&order=asc HTTP/1.1" 401 Unauthorized
+request_id=c6a2c2ad-9ceb-4a5d-8d98-6da9351ccf9b method=GET path=/api/v1/employees/ status_code=200 latency_ms=18144.43
+INFO:     127.0.0.1:64923 - "GET /api/v1/employees/?page=1&limit=10&sort_by=id&order=asc HTTP/1.1" 200 OK
+request_id=9a98cd87-6c75-4058-8caa-01fb09f124eb method=GET path=/api/v1/departments/ status_code=200 latency_ms=11521.64
+INFO:     127.0.0.1:59149 - "GET /api/v1/departments/ HTTP/1.1" 200 OK

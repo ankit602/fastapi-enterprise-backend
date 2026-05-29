@@ -1,0 +1,15 @@
+.coverage
+.env
+.env.*
+.git
+.pytest_cache
+.venv
+venv
+__pycache__
+*.pyc
+*.pyo
+*.log
+alembic/versions/__pycache__
+reports
+test.db
+tests/.coverage

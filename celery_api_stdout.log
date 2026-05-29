@@ -1,0 +1,11 @@
+DATABASE_URL = postgresql://postgres:postgres@localhost:5432/fastapi_practice_db
+request_id=2e88c750-7f6a-4c05-8b9c-8d5ce0432808 method=GET path=/ status_code=200 latency_ms=4.22
+INFO:     127.0.0.1:57576 - "GET / HTTP/1.1" 200 OK
+request_id=99e52077-15c4-4ea8-ad44-1c479ef944c5 method=POST path=/api/v1/auth/register status_code=200 latency_ms=605.89
+INFO:     127.0.0.1:57585 - "POST /api/v1/auth/register HTTP/1.1" 200 OK
+request_id=ccc39aa1-3ba4-48bf-bdfd-24c8f9bc82c0 method=POST path=/api/v1/auth/login status_code=200 latency_ms=335.87
+INFO:     127.0.0.1:57585 - "POST /api/v1/auth/login HTTP/1.1" 200 OK
+request_id=c53d6220-669a-4830-b853-9997732332a4 method=POST path=/api/v1/reports/employees status_code=200 latency_ms=14.02
+INFO:     127.0.0.1:57585 - "POST /api/v1/reports/employees HTTP/1.1" 200 OK
+request_id=7f6e5f28-4ebf-4a41-95a9-02e143691c87 method=GET path=/api/v1/reports/4/status status_code=200 latency_ms=4.35
+INFO:     127.0.0.1:57592 - "GET /api/v1/reports/4/status HTTP/1.1" 200 OK

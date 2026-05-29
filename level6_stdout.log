@@ -1,0 +1,22 @@
+DATABASE_URL = postgresql://postgres:postgres@localhost:5432/fastapi_practice_db
+request_id=9143bd2c-bc5a-4f8e-8bea-0386e63b2f4c method=GET path=/ status_code=200 latency_ms=18.89
+INFO:     127.0.0.1:49778 - "GET / HTTP/1.1" 200 OK
+request_id=0c38757e-b718-40c4-ab60-bc24779ae5dc method=POST path=/api/v1/auth/register status_code=200 latency_ms=333.63
+INFO:     127.0.0.1:63714 - "POST /api/v1/auth/register HTTP/1.1" 200 OK
+Welcome email sent to level6_admin_1779979061@test.com for user Level6 Admin
+request_id=676bce62-41eb-458e-8481-cb90d0e1b31b method=POST path=/api/v1/auth/login status_code=200 latency_ms=274.07
+INFO:     127.0.0.1:63714 - "POST /api/v1/auth/login HTTP/1.1" 200 OK
+request_id=e1b36f4d-d6ba-4dd7-b868-541bba2de0e6 method=POST path=/api/v1/reports/employees status_code=200 latency_ms=12.62
+INFO:     127.0.0.1:63714 - "POST /api/v1/reports/employees HTTP/1.1" 200 OK
+Employee report generated job_id=1 file_path=reports\employees_1.csv
+request_id=243fa5c1-92eb-4f86-b47e-62ae387d89b0 method=GET path=/api/v1/reports/1/status status_code=200 latency_ms=3.31
+INFO:     127.0.0.1:63714 - "GET /api/v1/reports/1/status HTTP/1.1" 200 OK
+request_id=036e77e7-7a29-4030-bd40-62cf054ef241 method=POST path=/api/v1/auth/register status_code=200 latency_ms=239.91
+INFO:     127.0.0.1:51188 - "POST /api/v1/auth/register HTTP/1.1" 200 OK
+Welcome email sent to level6_user_1779979101@test.com for user Level6 User
+request_id=5a910bcb-07b5-41a0-a86f-ae38dbdcefd9 method=POST path=/api/v1/auth/login status_code=200 latency_ms=222.44
+INFO:     127.0.0.1:51188 - "POST /api/v1/auth/login HTTP/1.1" 200 OK
+request_id=d8f9b3b7-b0b7-4ab5-8e5d-82ee5fc19450 method=POST path=/api/v1/reports/employees status_code=403 latency_ms=1.05
+INFO:     127.0.0.1:51188 - "POST /api/v1/reports/employees HTTP/1.1" 403 Forbidden
+request_id=b956e20b-f1cd-4769-8872-219199c9a140 method=GET path=/api/v1/reports/1/status status_code=200 latency_ms=3.01
+INFO:     127.0.0.1:51188 - "GET /api/v1/reports/1/status HTTP/1.1" 200 OK

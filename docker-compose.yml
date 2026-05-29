@@ -1,0 +1,57 @@
+services:
+  postgres-db:
+    image: postgres:16
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: fastapi_practice_db
+    ports:
+      - "5433:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d fastapi_practice_db"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  redis-cache:
+    image: redis:7
+    ports:
+      - "6380:6379"
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  fastapi-app:
+    build: .
+    env_file:
+      - .env.docker
+    ports:
+      - "8001:8000"
+    volumes:
+      - reports_data:/app/reports
+    depends_on:
+      postgres-db:
+        condition: service_healthy
+      redis-cache:
+        condition: service_healthy
+
+  celery-worker:
+    build: .
+    env_file:
+      - .env.docker
+    command: ["./scripts/docker_worker.sh"]
+    volumes:
+      - reports_data:/app/reports
+    depends_on:
+      postgres-db:
+        condition: service_healthy
+      redis-cache:
+        condition: service_healthy
+
+volumes:
+  postgres_data:
+  reports_data:

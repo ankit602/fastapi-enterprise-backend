@@ -1,0 +1,6 @@
+INFO:     Started server process [18132]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8001 (Press CTRL+C to quit)
+cache_unavailable error=Timeout connecting to server
+cache_unavailable error=Timeout connecting to server

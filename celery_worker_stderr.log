@@ -1,0 +1,11 @@
+[2026-05-28 22:23:54,863: INFO/MainProcess] Connected to redis://localhost:6379/1
+[2026-05-28 22:23:54,872: INFO/MainProcess] mingle: searching for neighbors
+[2026-05-28 22:23:55,918: INFO/MainProcess] mingle: all alone
+[2026-05-28 22:23:55,982: INFO/MainProcess] celery@DESKTOP-0I3NKG2 ready.
+[2026-05-28 22:25:32,144: INFO/MainProcess] Task send_welcome_email[c1bbac52-14f3-4c6a-8565-448e98cf75a7] received
+[2026-05-28 22:25:32,157: WARNING/MainProcess] SMTP email skipped to=celery_admin_1779987331@test.com reason=missing_smtp_config
+[2026-05-28 22:25:32,158: WARNING/MainProcess] Welcome email task completed for celery_admin_1779987331@test.com
+[2026-05-28 22:25:32,161: INFO/MainProcess] Task send_welcome_email[c1bbac52-14f3-4c6a-8565-448e98cf75a7] succeeded in 0.01536129997111857s: None
+[2026-05-28 22:25:32,531: INFO/MainProcess] Task generate_employee_report[4dc4ae8a-0824-437a-b53d-cfecda6b2480] received
+[2026-05-28 22:25:32,622: WARNING/MainProcess] Employee report generated job_id=4 file_path=reports\employees_4.csv
+[2026-05-28 22:25:32,625: INFO/MainProcess] Task generate_employee_report[4dc4ae8a-0824-437a-b53d-cfecda6b2480] succeeded in 0.09432979999110103s: None
