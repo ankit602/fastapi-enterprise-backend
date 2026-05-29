@@ -5,6 +5,7 @@ from sqlalchemy.orm import Session
 from app.database import get_db
 from app.schemas.auth_schema import RegisterRequest, LoginRequest, UserResponse, TokenResponse
 from app.services import auth_service
+from app.config import CELERY_TASKS_ENABLED
 from app.utils.response import success_response
 from app.utils.auth_dependencies import get_current_user
 from app.repositories import user_repository
@@ -19,7 +20,8 @@ def register(
     db: Session = Depends(get_db)
 ):
     user = auth_service.register_user(db, request)
-    send_welcome_email.delay(user.email, user.name)
+    if CELERY_TASKS_ENABLED:
+        send_welcome_email.delay(user.email, user.name)
     return success_response(
         data=UserResponse.from_orm(user).dict(),
         message="User registered successfully"

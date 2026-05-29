@@ -4,6 +4,7 @@ from fastapi import APIRouter, Depends
 from sqlalchemy.orm import Session
 
 from app.database import get_db
+from app.config import CELERY_TASKS_ENABLED
 from app.repositories import background_job_repository
 from app.tasks.report_tasks import generate_employee_report
 from app.utils.auth_dependencies import get_current_user, require_admin
@@ -22,14 +23,15 @@ def create_employee_report(
     db: Session = Depends(get_db)
 ):
     job = background_job_repository.create_job(db, "EMPLOYEE_REPORT")
-    generate_employee_report.delay(job.id)
+    if CELERY_TASKS_ENABLED:
+        generate_employee_report.delay(job.id)
 
     return success_response(
         data={
             "job_id": job.id,
             "status": job.status
         },
-        message="Report generation started"
+        message="Report generation started" if CELERY_TASKS_ENABLED else "Report job created; worker is disabled"
     )
 
 
