@@ -2,7 +2,7 @@
 
 from fastapi import FastAPI
 from app.middlewares.logging_middleware import logging_middleware
-from app.routers import employee_router, department_router, auth_router, report_router
+from app.routers import employee_router, department_router, auth_router, metrics_router, report_router
 from app.utils.exception_handler import global_exception_handler
 
 app = FastAPI(
@@ -17,6 +17,7 @@ app.include_router(employee_router)
 app.include_router(department_router)
 app.include_router(auth_router)
 app.include_router(report_router)
+app.include_router(metrics_router)
 
 @app.get("/")
 def root():

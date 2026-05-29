@@ -23,8 +23,8 @@ config.set_main_option("sqlalchemy.url", DATABASE_URL)
 # from myapp import mymodel
 # target_metadata = mymodel.Base.metadata
 from app.database import Base
-import app.models.employee_model
-import app.models.department_model
+from app.models.employee_model import Employee
+from app.models.department_model import Department
 
 target_metadata = Base.metadata
 

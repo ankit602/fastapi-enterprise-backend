@@ -39,8 +39,10 @@ def get_cache(key: str):
         return None
 
     if cached_data:
+        logger.info("cache_hit key=%s", key)
         return json.loads(cached_data)
 
+    logger.info("cache_miss key=%s", key)
     return None
 
 
@@ -73,8 +75,18 @@ def delete_cache_pattern(pattern: str):
         return
 
     try:
-        keys = redis_client.keys(pattern)
-        if keys:
-            redis_client.delete(*keys)
+        batch = []
+        deleted_count = 0
+
+        for key in redis_client.scan_iter(match=pattern, count=100):
+            batch.append(key)
+            if len(batch) >= 100:
+                deleted_count += redis_client.delete(*batch)
+                batch = []
+
+        if batch:
+            deleted_count += redis_client.delete(*batch)
+
+        logger.info("cache_pattern_deleted pattern=%s deleted_count=%s", pattern, deleted_count)
     except RedisError as exc:
         logger.warning("cache_delete_pattern_failed pattern=%s error=%s", pattern, exc)

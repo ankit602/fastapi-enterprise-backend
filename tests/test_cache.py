@@ -18,6 +18,24 @@ def test_cache_set_does_not_raise_when_redis_unavailable(monkeypatch):
     cache.set_cache("key", {"value": 1})
 
 
+def test_cache_pattern_delete_uses_scan_iter(monkeypatch):
+    monkeypatch.setattr(cache, "_cache_disabled_until", 0)
+    monkeypatch.setattr(cache.redis_client, "ping", Mock(return_value=True))
+    scan_mock = Mock(return_value=iter(["employees:1", "employees:2"]))
+    delete_mock = Mock(return_value=2)
+    keys_mock = Mock()
+
+    monkeypatch.setattr(cache.redis_client, "scan_iter", scan_mock)
+    monkeypatch.setattr(cache.redis_client, "delete", delete_mock)
+    monkeypatch.setattr(cache.redis_client, "keys", keys_mock)
+
+    cache.delete_cache_pattern("employees:*")
+
+    scan_mock.assert_called_once_with(match="employees:*", count=100)
+    delete_mock.assert_called_once_with("employees:1", "employees:2")
+    keys_mock.assert_not_called()
+
+
 def test_employee_create_clears_employee_cache(client, admin_headers, test_department, monkeypatch):
     delete_mock = Mock()
     monkeypatch.setattr(employee_service, "delete_cache_pattern", delete_mock)

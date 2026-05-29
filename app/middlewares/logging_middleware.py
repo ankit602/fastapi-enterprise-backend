@@ -6,6 +6,8 @@ import uuid
 from fastapi import Request
 from fastapi.responses import JSONResponse
 
+from app.utils.metrics import record_request
+
 
 async def logging_middleware(request: Request, call_next):
     request_id = str(uuid.uuid4())
@@ -26,6 +28,7 @@ async def logging_middleware(request: Request, call_next):
             f"latency_ms={latency_ms}"
         )
         print(log_message, flush=True)
+        record_request(request.method, request.url.path, 500, latency_ms)
         response = JSONResponse(
             status_code=500,
             content={
@@ -48,6 +51,7 @@ async def logging_middleware(request: Request, call_next):
         f"latency_ms={latency_ms}"
     )
     print(log_message, flush=True)
+    record_request(request.method, request.url.path, response.status_code, latency_ms)
 
     response.headers["X-Request-ID"] = request_id
     return response
